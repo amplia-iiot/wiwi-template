@@ -9,19 +9,19 @@
         </v-toolbar>
       </v-card-title>
       <v-card-text>
-        <component></component>
+        <wiwi></wiwi>
       </v-card-text>
     </v-card>
   </v-app>
 </template>
 <script>
 import config from "../meta-widget.json";
-import component from "./components/wiwi.vue";
+import wiwi from "./components/wiwi.vue";
 
 export default {
   name: "WIWizard",
   components: {
-    component
+    wiwi
   },
   computed: {
     title() {
