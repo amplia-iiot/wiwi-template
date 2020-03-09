@@ -25,7 +25,12 @@ export default {
   },
   computed: {
     title() {
+      {{#if_eq WiWiType "wizard"}}
       return config.actions[Object.keys(config.actions)[0]][0];
+      {{/if_eq}}
+      {{#if_eq WiWiType "widget"}}
+      return config.widgets[0];
+      {{/if_eq}}
     }
   }
 };
