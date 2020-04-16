@@ -30,6 +30,9 @@
 </template>
 
 <script>
+/* IMPORTANT: if you need babel-polyfill, please don't remove the following import */
+import '../utils/require-babel-polyfill.js'
+
 import one from "./steps/one.vue";
 
 export default {
