@@ -25,6 +25,18 @@ $ npm install
 $ npm run dev
 ```
 
+### For vue-cli 3 need @vue/cli-init instead vue-cli:
+
+```shell
+$ yarn global add @vue/cli-init
+```
+
+or 
+
+```shell
+$ npm install -g @vue/cli-init
+```
+
 ## Generate version
 
 This project offers the following script that version the project using [npm-version](https://docs.npmjs.com/cli/version)

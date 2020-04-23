@@ -9,10 +9,10 @@
 yarn install
 
 # serve with hot reload at localhost:8080
-yarn run dev
+yarn dev
 
 # build for production with minification (webpack)
-yarn run build
+yarn build
 ```
 
 or
@@ -39,7 +39,7 @@ Installation and management wiwi on the web OpenGate UX is done through the foll
 **Register**
 
 ``` bash
-$ yarn run register
+$ yarn register
 ```
 
 or
@@ -51,7 +51,7 @@ $ npm run register
 **Update**
 
 ``` bash
-$ yarn run update
+$ yarn update
 ```
 
 or
@@ -63,7 +63,7 @@ $ npm run update
 **Delete**
 
 ``` bash
-$ yarn run delete
+$ yarn delete
 ```
 
 or 
