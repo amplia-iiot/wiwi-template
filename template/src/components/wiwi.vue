@@ -13,6 +13,10 @@
         <v-stepper-step :complete="step > 2" step="2" editable>\{{ $t('step.two.title') }}</v-stepper-step>
       </v-stepper>
     </v-card-text>
+    <template v-if="data">
+      <v-card-subtitle>Data from web:</v-card-subtitle>
+      <v-card-text>{{data}}</v-card-text>
+    </template>
     <v-card-actions>
       <v-btn
         :disabled="step === 1"
@@ -75,6 +79,12 @@ export default {
     }
   },
   name: "{{ name }}",
+  props: {
+    data: {
+      type: Object,
+      default: undefined
+    }
+  },
   components: {
     one
   },

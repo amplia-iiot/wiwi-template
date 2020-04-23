@@ -87,6 +87,57 @@ This project offers the following script that version the project using [npm-ver
 $ npm version [ major | minor | patch ]
 ```
 
+## Important: data property
+
+WIWI can be created to overwrite the actions of the web. In other words, overwrite the web assistants themselves.
+
+In the case of overwriting editing actions, the web will pass the necessary data to the wiwi through the data property
+
+The following code is an example of how to configure a WIWI to receive the `data` property (include on example code):
+
+```javascript
+
+<template>
+  <v-card flat>
+    <v-card-subtitle>Data from web:</v-card-subtitle>
+    <v-card-text>{{data}}</v-card-text>
+  </v-card>
+</template>
+
+<script>
+/* IMPORTANT: if you need babel-polyfill, please don't remove the following import */
+import '../utils/require-babel-polyfill.js'
+
+export default {
+  //https://kazupon.github.io/vue-i18n/guide/component.html#component-based-localization
+  i18n: {
+    messages: {
+      en: {},
+      es: {}
+    }
+  },
+  name: "MyWiwi",
+  props: {
+    data: {
+      type: Object,
+      default: undefined
+    }
+  },
+  components: {
+  },
+  data() {
+  },
+  computed: {},
+  watch: {},
+  methods: {
+  }
+};
+</script>
+<style scoped>
+</style>
+
+```
+
 ## Utils for development
 
 The project contains some tools (components and plugins) contained in the web where the wiwi will be installed.
