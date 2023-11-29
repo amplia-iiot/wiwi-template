@@ -8,7 +8,7 @@
 # install dependencies
 yarn install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080, for development
 yarn dev
 
 # build for production with minification (webpack)
@@ -34,50 +34,71 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 > Use axios: https://github.com/axios/axios
 
+### Build the project:
+
+**Should not be run if working with generated build on nexus.** 
+See "Build Setup".
+
+``` bash
+$ yarn run build
+# or
+$ npm run build
+```
+
+### Install depedencies:
+
+**Optional** if you are working with the generated build on nexus or have problems with the versions of the dependencies used when running the install commands:
+
+``` bash
+$ yarn --cwd "scripts" [install|upgrade]
+# or
+$ npm --prefix "scripts" [install|upgrade]
+```
+
+### Installation commands
+
 Installation and management wiwi on the web OpenGate UX is done through the following commands:
 
 **Register**
 
 ``` bash
-$ yarn register
-```
-
-or
-
-``` bash
+$ yarn run register
+# or
 $ npm run register
 ```
 
 **Update**
 
 ``` bash
-$ yarn update
-```
-
-or
-
-``` bash
+$ yarn run update
+# or
 $ npm run update
 ```
 
 **Delete**
 
 ``` bash
-$ yarn delete
-```
-
-or 
-
-``` bash
+$ yarn run delete
+# or
 $ npm run delete
 ```
+
 
 They will ask for the following information:
 
 1. Type url of api-web (http://localhost:3977): default http://localhost:3977
-2. domain: domain of user that exists in the platform OpenGate
-3. user name: user that exists in the platform OpenGate
-4. password: password of user
+2. Type url of api-north (https://odmux01.amplia.int): default https://odmux01.amplia.int
+3. domain: domain of user that exists in the platform OpenGate
+4. user name: user that exists in the platform OpenGate
+5. password: password of user
+
+**Publish**
+
+``` bash
+$ yarn run publish <update|register|delete> <URL_WEB_API> <DOMAIN> <USER> <PASSWORD> <URL_NORTH_API> 
+# or
+$ npm run publish <update|register|delete> <URL_WEB_API> <DOMAIN> <USER> <PASSWORD> <URL_NORTH_API>
+```
 
 ## Generate version
 

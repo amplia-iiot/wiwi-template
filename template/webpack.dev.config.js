@@ -1,21 +1,21 @@
 'use strict'
-const webpack = require('webpack')
-const merge = require('webpack-merge')
 const path = require('path')
-const baseWebpackConfig = require('./webpack.base.config')
-//const CopyWebpackPlugin = require('copy-webpack-plugin')
+const merge = require('webpack-merge')
+const webpack = require('webpack')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
-require("babel-polyfill");
+const baseWebpackConfig = require('./webpack.base.config')
+require('babel-polyfill')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  entry: ["babel-polyfill", './src/main.js'],
+  entry: ['babel-polyfill', './src/main.js'],
   module: {
     rules: [{
       test: /\.s(c|a)ss$/,
@@ -28,9 +28,21 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           options: {
             implementation: require('sass'),
             sassOptions: {
-              fiber: require('fibers'),
+              fiber: false,
               indentedSyntax: true // optional
             }
+          }
+        }
+      ]
+    },
+    {
+      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
           }
         }
       ]
@@ -44,8 +56,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
-        { from: /.*/, to: path.posix.join('/', 'index.html') },
-      ],
+        { from: /.*/, to: path.posix.join('/', 'index.html') }
+      ]
     },
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
@@ -59,32 +71,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
     watchOptions: {
-      poll: false,
+      poll: false
     }
   },
   plugins: [
     new VuetifyLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    //new webpack.NoEmitOnErrorsPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
+    })
     // copy custom static assets
-    /*new CopyWebpackPlugin([
+    /* new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
         to: 'static',
         ignore: ['.*']
       }
-    ])*/
+    ]) */
   ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -107,13 +119,13 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`]
         },
         onErrors: () => {
           const notifier = require('node-notifier')
 
           return (severity, errors) => {
-            if (severity !== 'error') return
+            if (severity !== 'error') { return }
 
             const error = errors[0]
             const filename = error.file && error.file.split('!').pop()

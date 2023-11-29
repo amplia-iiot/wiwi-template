@@ -1,5 +1,6 @@
 var stdin = process.openStdin();
 var labels = {
+  apiNorth: 'Type url of api-north (https://odmux01.amplia.int):',
   apiWebUrl: 'Type url of api-web (http://localhost:3977):',
   domain: 'Type your domain:',
   user: 'Type your user name:',
@@ -8,6 +9,7 @@ var labels = {
 
 var defaults = {
   apiWebUrl: 'http://localhost:3977',
+  apiNorth: 'https://odmux01.amplia.int',
   meta: 'meta-widget.json'
 };
 
